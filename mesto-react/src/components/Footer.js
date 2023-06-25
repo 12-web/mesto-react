@@ -5,8 +5,8 @@ function Footer() {
 
   useEffect(() => {
     const date = new Date();
-    const currenYear = date.getFullYear();
-    setCurrentYear(currenYear);
+    const currentYear = date.getFullYear();
+    setCurrentYear(currentYear);
   }, []);
 
   return (
