@@ -44,7 +44,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
               title="Редактировать профиль"
               type="button"
               onClick={onEditProfile}
-            ></button>
+            />
           </div>
         </div>
         <button
@@ -53,7 +53,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
           title="Добавить карточку"
           type="button"
           onClick={onAddPlace}
-        ></button>
+        />
       </section>
       <section className="journey">
         <ul className="journey__list">

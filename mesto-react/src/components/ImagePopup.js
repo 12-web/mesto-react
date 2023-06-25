@@ -7,7 +7,7 @@ function ImagePopup({ card, onClose }) {
           type="button"
           title="Закрыть окно"
           onClick={onClose}
-        ></button>
+        />
         <figure className="popup__img-container">
           <img className="popup__img" src={card.link} alt={card.name} />
           <figcaption className="popup__caption">{card.name}</figcaption>
