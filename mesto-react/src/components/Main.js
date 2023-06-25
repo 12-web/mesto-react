@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import api from '../utils/api';
-import Card from './Card';
+import React, { useState, useEffect } from "react";
+import api from "../utils/api";
+import Card from "./Card";
 
-function Main(props) {
-  const [userName, setUserName] = useState('');
-  const [userDescription, setUserDescription] = useState('');
-  const [userAvatar, setUserAvatar] = useState('');
+function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
+  const [userName, setUserName] = useState("");
+  const [userDescription, setUserDescription] = useState("");
+  const [userAvatar, setUserAvatar] = useState("");
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
@@ -18,18 +18,21 @@ function Main(props) {
         // получение карточек
         setCards(cardsList);
       })
-      .catch((err) => { console.log(err) });
+      .catch(console.error);
   }, []);
 
   return (
     <main className="content">
       <section className="profile">
         <div className="profile__info">
-          <div className="profile__img-container profile__edit-avatar" onClick={props.onEditAvatar}>
+          <div
+            className="profile__img-container profile__edit-avatar"
+            onClick={onEditAvatar}
+          >
             <img
-            src={userAvatar}
-            alt="Фото пользователя"
-            className="profile__img"
+              src={userAvatar}
+              alt="Фото пользователя"
+              className="profile__img"
             />
           </div>
           <div className="profile__user-info">
@@ -40,9 +43,8 @@ function Main(props) {
               id="edit-profile-btn"
               title="Редактировать профиль"
               type="button"
-              onClick={props.onEditProfile}
-              >
-            </button>
+              onClick={onEditProfile}
+            ></button>
           </div>
         </div>
         <button
@@ -50,21 +52,18 @@ function Main(props) {
           id="add-card-btn"
           title="Добавить карточку"
           type="button"
-          onClick={props.onAddPlace}
-          >
-        </button>
+          onClick={onAddPlace}
+        ></button>
       </section>
       <section className="journey">
         <ul className="journey__list">
-          {
-            cards.map((cardData, i) => (
-              <Card
-                key={i}
-                onCardClick={props.onCardClick}
-                card={cardData}
-              />
-            ))
-          }
+          {cards.map((cardData) => (
+            <Card
+              key={cardData._id}
+              onCardClick={onCardClick}
+              card={cardData}
+            />
+          ))}
         </ul>
       </section>
     </main>

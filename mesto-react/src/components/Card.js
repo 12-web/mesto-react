@@ -1,8 +1,7 @@
-function Card(props) {
-
+function Card({ onCardClick, card }) {
   // открытие попапа просмтора карточки
   function handleClick() {
-    props.onCardClick(props.card);
+    onCardClick(card);
   }
 
   return (
@@ -12,23 +11,23 @@ function Card(props) {
         className="journey__img-btn btn"
         title="Посмотреть фото"
         onClick={handleClick}
-        >
-        <img className="journey__img" src={props.card.link} alt={props.card.name} />
+      >
+        <img className="journey__img" src={card.link} alt={card.name} />
       </button>
       <button
         type="button"
         className="journey__delete-btn btn"
-        title="Удалить">
-      </button>
+        title="Удалить"
+      ></button>
       <div className="journey__description">
-        <h2 className="journey__title">{props.card.name}</h2>
+        <h2 className="journey__title">{card.name}</h2>
         <div className="journey__like-container">
           <button
-          type="button"
-          className="journey__like-btn btn"
-          title="Оценить">
-        </button>
-        <span className="journey__like-digit">{props.card.likes.length}</span>
+            type="button"
+            className="journey__like-btn btn"
+            title="Оценить"
+          ></button>
+          <span className="journey__like-digit">{card.likes.length}</span>
         </div>
       </div>
     </li>
