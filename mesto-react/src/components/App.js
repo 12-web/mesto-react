@@ -28,6 +28,7 @@ const App = () => {
     avatar: '',
   });
 
+  /** добавление данных пользователя и карточек при загрузке страницы */
   useEffect(() => {
     setIsPageLoading(true);
     Promise.all([api.getUserInformation(), api.getInitialCards()])
@@ -46,7 +47,7 @@ const App = () => {
    * @param {string} name - название карточки
    * @param {string} link - ссылка на картинку карточки
    */
-  const handleAddPlaceSubmit = ({ name, link }) => {
+  const handleAddPlaceSubmit = ({ title: name, link }) => {
     setFormIsLoading(true);
     api
       .addNewCard(name, link)

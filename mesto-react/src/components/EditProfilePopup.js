@@ -15,7 +15,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateUser, isFormLoading }) => {
       name: currentUser.name,
       about: currentUser.about,
     });
-  }, [currentUser]);
+  }, [currentUser, isOpen]);
 
   /**
    * функция отправки формы при которой обновляются данные в профиле

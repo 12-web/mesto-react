@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import PopupWithForm from './PopupWithForm';
 
 const AddPlacePopup = ({ onClose, isOpen, onAddPlace, isFormLoading }) => {
-  const [cardData, setCardData] = useState({ name: '', link: '' });
+  const [cardData, setCardData] = useState({ title: '', link: '' });
 
   /** создание новой карточки */
   const handleSubmit = e => {
@@ -18,6 +18,11 @@ const AddPlacePopup = ({ onClose, isOpen, onAddPlace, isFormLoading }) => {
       [e.target.name]: e.target.value,
     });
   };
+
+  /** обнуление данных формы при открытии модального окна */
+  useEffect(() => {
+    setCardData({ title: '', link: '' });
+  }, [isOpen]);
 
   return (
     <PopupWithForm
@@ -34,7 +39,7 @@ const AddPlacePopup = ({ onClose, isOpen, onAddPlace, isFormLoading }) => {
         className='popup__input popup__input_value_name'
         id='add-name'
         type='text'
-        name='name'
+        name='title'
         placeholder='Название'
         minLength='2'
         maxLength='30'
