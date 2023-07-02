@@ -20,7 +20,7 @@ class Api {
 
   // получение карточек
   getInitialCards() {
-    return this._request("cards", {
+    return this._request('cards', {
       headers: {
         authorization: this._headers.authorization,
       },
@@ -28,7 +28,7 @@ class Api {
   }
   // получение информации пользователя
   getUserInformation() {
-    return this._request("users/me", {
+    return this._request('users/me', {
       headers: {
         authorization: this._headers.authorization,
       },
@@ -36,8 +36,8 @@ class Api {
   }
   // изменение информации пользователя
   editProfileData(name, about) {
-    return this._request("users/me", {
-      method: "PATCH",
+    return this._request(`users/me`, {
+      method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
         name,
@@ -48,8 +48,8 @@ class Api {
 
   // изменение аватара пользователя
   editUserAvatar(avatar) {
-    return this._request("users/me/avatar", {
-      method: "PATCH",
+    return this._request('users/me/avatar', {
+      method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
         avatar,
@@ -58,8 +58,8 @@ class Api {
   }
   // добавление новой карточки
   addNewCard(name, link) {
-    return this._request("users/me/cards", {
-      method: "POST",
+    return this._request('cards', {
+      method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
         name,
@@ -70,26 +70,16 @@ class Api {
   // удаление карточки
   deleteCard(id) {
     return this._request(`cards/${id}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
         authorization: this._headers.authorization,
       },
     });
   }
-  // добавление лайка
-  addLike(id) {
+  // изменение статуса лайка
+  changeLikeCardStatus(id, isLiked) {
     return this._request(`cards/${id}/likes`, {
-      method: "PUT",
-      headers: {
-        authorization: this._headers.authorization,
-      },
-    });
-  }
-
-  // удаление лайка
-  removeLike(id) {
-    return this._request(`cards/${id}/likes`, {
-      method: "DELETE",
+      method: isLiked ? 'PUT' : 'DELETE',
       headers: {
         authorization: this._headers.authorization,
       },
@@ -98,10 +88,10 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-68",
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-68',
   headers: {
-    authorization: "14b13473-1b56-4228-afac-2edb4b448b71",
-    "Content-Type": "application/json",
+    authorization: '14b13473-1b56-4228-afac-2edb4b448b71',
+    'Content-Type': 'application/json',
   },
 });
 

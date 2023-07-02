@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-function Footer() {
+const Footer = () => {
   const [currentYear, setCurrentYear] = useState(0);
 
   useEffect(() => {
@@ -10,10 +10,10 @@ function Footer() {
   }, []);
 
   return (
-    <footer className="footer">
-      <p className="footer__copyright">© {currentYear} Mesto Russia</p>
+    <footer className='footer'>
+      <p className='footer__copyright'>© {currentYear} Mesto Russia</p>
     </footer>
   );
-}
+};
 
 export default Footer;
